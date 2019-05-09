@@ -1,5 +1,10 @@
 # funkypenguin18_infra
 
+# ДЗ №13 (docker-2)
+
+Создан образ, проверена работоспособность, затем образ загружен в докерхаб
+https://cloud.docker.com/u/funkypenguin18/repository/docker/funkypenguin18/otus-reddit
+
 # ДЗ №12 (docker-1)
 
 выполнил обзорную д/з по докеру
