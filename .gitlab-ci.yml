@@ -33,6 +33,6 @@ deploy_dev_job:
   stage: reviw
   script:
     - echo 'Deploy'
-  enviroment:
+  environment:
     name: dev
     url: http://dev.exapmle.com
