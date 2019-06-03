@@ -1,5 +1,46 @@
 # funkypenguin18_infra
 
+# ДЗ №16 (gitlab-ci-1)
+
+Разворачивания инстанса в гугл клауд автоматизировано при помощи терраформ,
+настройка необходимого программного обеспечения осуществленна при помощи ансибл-скрипта
+
+Создана группа homework и проектт example,
+Запущен и зарегестрирован раннер в докере
+
+Статус проверен через CI/CD pipeline,
+Приложение Reddit добавлено в наш gitlab репозиторий
+Добавили тесты в пайплайн, с добавлением библиотеки для тестированя в гемфайл
+
+Изменены пайплайны для выкатки в дев, затем описаны окружения стейджинг и продакшен
+
+В пайплайн добавлена директива, не позволяющая деплоить в окружения stage и prod без тега git
+
+```
+only:
+   - /^\d+\.\d+\.\d+/
+```
+
+Проверяем с тегом
+```
+git commit -a -m ‘#4 add logout button to profile page’
+git tag 2.4.10
+git push gitlab gitlab-ci-1 --tags
+```
+Динамические окружения Добавляем job, который определяет динамическое окружение для всех веток в репозитории, кроме ветки master
+```
+branch review:
+ stage: review
+ script: echo "Deploy to $CI_ENVIRONMENT_SLUG"
+ environment:
+ name: branch/$CI_COMMIT_REF_NAME
+ url: http://$CI_ENVIRONMENT_SLUG.example.com
+ only:
+ - branches
+ except:
+ - master
+```
+
 # ДЗ №15 (docker-4)
 
 Описываем инфраструктуру в файле docker-compose.yml
