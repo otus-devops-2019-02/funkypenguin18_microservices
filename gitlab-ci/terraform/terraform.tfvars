@@ -1,0 +1,7 @@
+project = "docker-239621"
+public_key_path = "~/.ssh/id_rsa.pub"
+private_key_path = "~/.ssh/id_rsa"
+disk_image = "ubuntu-1604-lts"
+machine_type = "n1-standard-1"
+region = "europe-west1"
+zone = "europe-west1-c"

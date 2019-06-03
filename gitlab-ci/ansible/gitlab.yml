@@ -1,0 +1,32 @@
+---
+- name: Install Gitlab to host
+  hosts: all
+  vars:
+    work_user: appuser
+    docker_group: docker
+    gitlab_dir: /srv/gitlab
+    gitlab_ext_ip: 34.76.230.23
+    gitlab_runners: 1 
+  
+  tasks:
+
+  - name: Create dir
+    become: true
+    file:
+      path: "{{ gitlab_dir }}"
+      state: directory
+      owner: "{{ work_user }}"
+      group: "{{ docker_group }}"
+      mode: 0770
+      recurse: yes
+
+  - name: Copy docker-compose file
+    template:
+      src: template/docker-compose.yml.j2
+      dest: "{{ gitlab_dir }}/docker-compose.yml"
+      owner: "{{ work_user }}"
+      group: "{{ docker_group }}"
+
+  - name: Start Gitlab CI
+    become: true
+    shell: "cd {{ gitlab_dir }}; docker-compose up -d"
