@@ -1,5 +1,25 @@
 # funkypenguin18_infra
 
+# ДЗ №17 (monitoring-1)
+
+Создадал правила для фаервола (Prometheus + Puma)
+
+```
+gcloud compute firewall-rules create prometheus-default --allow tcp:9090
+gcloud compute firewall-rules create puma-default --allow tcp:9292
+```
+
+Пересоздал докер-хост (старый был из домашки для докера, пришлось убивать в докер-машин)
+
+Запустил прометея, посмотрел на него:
+```
+docker run --rm -p 9090:9090 -d --name prometheus prom/prometheus:v2.1.0
+```
+
+Поменял конфигурацию (в monitoring/prometheus создайте файл prometheus.yml)
+
+Собрал образы прометеуса и сервисов, написал мейкфайл.
+
 # ДЗ №16 (gitlab-ci-1)
 
 Разворачивания инстанса в гугл клауд автоматизировано при помощи терраформ,
