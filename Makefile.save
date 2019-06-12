@@ -1,4 +1,8 @@
 USER_NAME = funkypenguin18
+
+qq
+
+
 export USER_NAME
 
 build: post comment ui prometheus 
@@ -24,5 +28,7 @@ push_ui:
 	docker push ${USER_NAME}/ui
 push_prometheus:
 	docker push ${USER_NAME}/prometheus
+push_cloudprober:
+	docker push ${USER_NAME}/cloudprober
 push_alertmanager:
 	docker push ${USER_NAME}/alertmanager
