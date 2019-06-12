@@ -1,5 +1,16 @@
 # funkypenguin18_infra
 
+# ДЗ №18 (monitoring-2)
+
+Созданы необходимые правила фаервола (графана, cAdvisor, AlertManager)
+
+Образы собраны через Makefile (make, make push)
+
+Настроен сбор метрик докера с помощью cAdvisor
+Подняты Grafana и AlertManager
+Настроены дашборды для сбора метрик приложения и бизнес метрик
+Настроены алерты на остановку сервисов
+
 # ДЗ №17 (monitoring-1)
 
 Создадал правила для фаервола (Prometheus + Puma)
