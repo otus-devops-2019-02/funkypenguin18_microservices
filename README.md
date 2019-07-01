@@ -1,4 +1,37 @@
 # funkypenguin18_infra
+# ДЗ №20 (kubernetes-2)
+
+Установил миникьюб, развернул кластер локально, развернул там приложение
+Добавил сервисы, прбросил порт и посмотрел что всё отображается
+
+в GCE:
+создал кластер, подключился к нему
+```
+gcloud container clusters get-credentials standard-cluster-1 --zone us-central1-a --project docker-239621
+```
+настроил фаервол на порты tcp:30000-32767
+
+найдены внешние адреса:
+```
+kubectl get nodes -o wide
+NAME                                                STATUS   ROLES    AGE   VERSION          INTERNAL-IP   EXTERNAL-IP      OS-IMAGE                             KERNEL-VERSION   CONTAINER-RUNTIME
+gke-standard-cluster-1-default-pool-9a149385-653l   Ready    <none>   31m   v1.12.8-gke.10   10.128.0.3    34.68.61.184     Container-Optimized OS from Google   4.14.127+        docker://17.3.2
+gke-standard-cluster-1-default-pool-9a149385-d8qv   Ready    <none>   31m   v1.12.8-gke.10   10.128.0.4    35.222.171.233   Container-Optimized OS from Google   4.14.127+        docker://17.3.2
+gke-standard-cluster-1-default-pool-9a149385-f5rf   Ready    <none>   31m   v1.12.8-gke.10   10.128.0.2    34.67.119.253    Container-Optimized OS from Google   4.14.127+        docker://17.3.2
+```
+и порт ui:
+```
+kubectl describe service ui -n dev | grep NodePort
+Type:                     NodePort
+NodePort:                 <unset>  32092/TCP
+```
+запустил дашборд, проверил что всё работает.
+
+# ДЗ №20 (kubernetes-1)
+
+Добавлены Deployment манифесты для запуска приложения в kubernetes.
+Пройден Kubernetes The Hard Way.
+kubectl apply -f проходит по созданным до этого deployment-ам (ui, post, mongo, comment) и поды запускаются.
 
 # ДЗ №18 (monitoring-2)
 
